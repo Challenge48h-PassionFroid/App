@@ -5,11 +5,11 @@
 <h1 class="my-4">Recherche d'image</h1>
 
 <form>
-    <div class="input-group mt-2 mb-2">
+    <div class="input-group mt-2">
         <input type="text" placeholder="Nom de l'image" name="name" class="form-control border-secondary">
         <div class="input-group-append">
             <select name="Type" class="form-select px-2">
-                <option value="default" selected>--Type d'image--</option>
+                <option value="none" selected>-- Type d'image --</option>
                 <option value="passionfroid">Photo PassionFroid</option>
                 <option value="fournisseur">Photo Fournisseur</option>
                 <option value="logo">Logo</option>
@@ -22,7 +22,7 @@
 
     <button type="button" class="btn text-secondary mb-2" onclick="toggler()">Filtres avancés <i id="chevron" class="fas fa-chevron-down" style="transition: transform 0.3s"></i></button>
 
-    <div id="advancedFilters" style="display: none">
+    <div id="advancedFilters" style="display: none" class="mb-2">
         <div>
             <div class="d-flex justify-content-between">
                 <div class="custom-control custom-switch">
@@ -56,6 +56,8 @@
         </div>
     </div>
 </form>
+
+<hr />
 
 <script>
     function toggler() {
