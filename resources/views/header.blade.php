@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Ajouter une image</a>
+                    <a class="nav-link" href="/ajout">Ajouter une image</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Ajouter un tag</a>
