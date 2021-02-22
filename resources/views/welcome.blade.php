@@ -87,6 +87,11 @@
         </div>
     </div>
 
+    <div>
+        <label>Tags (séparer par des points-virgules) :</label>
+        <textarea name="Tags" class="form-control"></textarea>
+    </div><br>
+
     <input type="submit" value="Rechercher">
 
 </form>
