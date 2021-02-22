@@ -2,98 +2,66 @@
 
 @section('content')
 
-<h1>Recherche d'image</h1><br>
+<h1 class="my-4">Recherche d'image</h1>
 
-<form method="post" action="/">
-
-    <div class="row form-group">
-        <div  class="col-4">
-            <label>Nom de l'image :</label>
-            <input type="text" name="Nom" class="form-control">
-        </div>
-
-        <div  class="col-4">
-            <label>Type de l'image :</label>
-            <select name="Type" class="form-control">
-                <option value="">--Veuillez choisir le type--</option>
+<form>
+    <div class="input-group mt-2 mb-2">
+        <input type="text" placeholder="Nom de l'image" name="name" class="form-control border-secondary">
+        <div class="input-group-append">
+            <select name="Type" class="form-select px-2">
+                <option value="default" selected>--Type d'image--</option>
                 <option value="passionfroid">Photo PassionFroid</option>
                 <option value="fournisseur">Photo Fournisseur</option>
                 <option value="logo">Logo</option>
             </select>
+            <button class="btn btn-outline-secondary border-left-0" type="button">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
+    </div>
 
+    <button type="button" class="btn text-secondary mb-2" onclick="toggler()">Filtres avancés <i id="chevron" class="fas fa-chevron-down" style="transition: transform 0.3s"></i></button>
+
+    <div id="advancedFilters" style="display: none">
         <div>
-            <label>Crédits de la photo :</label>
-            <input type="text" name="Credits" placeholder="Nom de l'auteur, nom de la banque d'images, etc..." class="form-control">
+            <div class="d-flex justify-content-between">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" id="withProduct" name="withProduct" class="custom-control-input">
+                    <label class="custom-control-label" for="withProduct">Produit visible</label>
+                </div>
+
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" id="withHuman" name="withHuman" class="custom-control-input">
+                    <label class="custom-control-label" for="withHuman">Humain visible</label>
+                </div>
+
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" id="isInstitutional" name="isInstitutional" class="custom-control-input">
+                    <label class="custom-control-label" for="isInstitutional">Photo institutionnelle</label>
+                </div>
+
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" id="isVertical" name="isVertical" class="custom-control-input">
+                    <label class="custom-control-label" for="isVertical">Image verticale</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-3">
+            <input type="text" name="credits" placeholder="Crédits" class="form-control" />
+        </div>
+
+        <div class="my-3">
+            <input type="text" name="tags" placeholder="Tags (séparés par des virgules)" class="form-control" />
         </div>
     </div>
-
-    <br><div class="row form-group">
-        <div class="col">
-            <p>Le produit est-il visible sur la photo ?</p>
-            <input type="radio" id="AvecProduit" name="ProduitVisible" value="AvecProduit" class="form-check-input">
-            <label for="AvecProduit" class="form-check-label">Avec produit</label><br>
-            <input type="radio" id="SansProduit" name="ProduitVisible" value="SansProduit" class="form-check-input">
-            <label for="SansProduit" class="form-check-label">Sans produit</label>
-        </div>
-
-        <div class="col">
-            <p>Un humain est-il visible sur la photo ?</p>
-            <input type="radio" id="AvecHumain" name="HumainVisible" value="AvecHumain" class="form-check-input">
-            <label for="AvecHumain" class="form-check-label">Avec humain</label><br>
-            <input type="radio" id="SansHumain" name="HumainVisible" value="SansHumain" class="form-check-input">
-            <label for="SansHumain" class="form-check-label">Sans humain</label>
-        </div>
-
-        <div class="col">
-            <p>La photo est-elle institutionnelle ?</p>
-            <input type="radio" id="Institutionnelle" name="Institutionnelle" value="Institutionnelle" class="form-check-input">
-            <label for="Institutionnelle" class="form-check-label">Oui</label><br>
-            <input type="radio" id="NonInstitutionnelle" name="Institutionnelle" value="NonInstitutionnelle" class="form-check-input">
-            <label for="NonInstitutionnelle" class="form-check-label">Non</label>
-        </div>
-
-        <div class="col">
-            <p>Quel est le format de l'image ?</p>
-            <input type="radio" id="Verticale" name="Format" value="Verticale" class="form-check-input">
-            <label for="Verticale" class="form-check-label">Verticale</label><br>
-            <input type="radio" id="Horizontale" name="Format" value="Horizontale" class="form-check-input">
-            <label for="Horizontale" class="form-check-label">Horizontale</label>
-        </div>
-    </div>
-
-    <br><div class="row form-group">
-        <div class="col">
-            <p>Les droits d'utilisation sont-ils limités ?</p>
-            <input type="radio" id="UtilisationLimite" name="LimitationUtilisation" value="UtilisationLimite" class="form-check-input">
-            <label for="UtilisationLimite" class="form-check-label">Oui</label><br>
-            <input type="radio" id="UtilisationNonLimite" name="LimitationUtilisation" value="UtilisationNonLimite" class="form-check-input">
-            <label for="UtilisationNonLimite" class="form-check-label">Non</label>
-        </div>
-
-        <!-- /!\ A n'afficher que si l'utilisateur à répondu "Oui" à la question des droits d'utilisation limités-->
-        <div class="col">
-            <p>L'image est-elle protégée par un Copyright ?</p>
-            <input type="radio" id="AvecCopyright" name="Copyright" value="AvecCopyright" class="form-check-input">
-            <label for="AvecCopyright" class="form-check-label">Oui</label><br>
-            <input type="radio" id="SansCopyright" name="Copyright" value="SansCopyright" class="form-check-input">
-            <label for="SansCopyright" class="form-check-label">Non</label>
-        </div>
-
-        <!-- /!\ A n'afficher que si l'utilisateur à répondu "Oui" à la question des droits d'utilisation limités-->
-        <div class="col">
-            <label>Date de fin des droits d'utilisation :</label>
-            <input type="date" name="DateFinDroits" class="form-control">
-        </div>
-    </div>
-
-    <div>
-        <label>Tags (séparer par des points-virgules) :</label>
-        <textarea name="Tags" class="form-control"></textarea>
-    </div><br>
-
-    <input type="submit" value="Rechercher">
-
 </form>
+
+<script>
+    function toggler() {
+        $('#advancedFilters').toggle()
+        $('#chevron').toggleClass('crossRotate')
+    }
+</script>
 
 @endsection
