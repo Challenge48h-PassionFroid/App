@@ -13,31 +13,36 @@ class AuthController extends Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function displayLogin(Request $request)
+    public function displayLogin()
     {
         $value = session('jwt');
         // Utilisateur connecté ?
         if (is_null($value)) {
             return view('login');
         }
-        
+
         return redirect('/');
     }
 
-    /**
-   * login to strapi
-   *
-   * @param  string  $email
-   * @param  string  $password
-   */
-    public function loginToStrapi($email, $password)
+    public function loginToStrapi(Request $request)
     {
-        $response = Http::get('https://chall48h-passionfroid.herokuapp.com/auth/local', [
-            'identifier' => $email,
-            'password' => $password,
-          ]);
-      
-          dump($response);
-          return redirect('/login');
+        $response = Http::post('https://chall48h-passionfroid.herokuapp.com/auth/local', [
+            'identifier' => $request->input('email'),
+            'password' => $request->input('password')
+        ]);
+
+        if ($response->status() == 200) {
+            // Stock Token JWT dans la session
+            session(['jwt' => $response->throw()->json()['jwt']]);
+            return redirect('/');
+        }
+
+        return redirect('/connexion')->withErrors(['credentials' => 'Identifiant et/ou mot de passe incorrect.']);
+    }
+
+    public function logout()
+    {
+        session(['jwt' => null]);
+        return redirect('/connexion');
     }
 }

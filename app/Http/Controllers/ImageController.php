@@ -9,6 +9,7 @@ class ImageController extends Controller
     public function displayAddImage()
     {
         $value = session('jwt');
+        
         // Utilisateur connecté ?
         if (is_null($value)) {
             return redirect('/connexion');
@@ -20,6 +21,7 @@ class ImageController extends Controller
     public function displaySearchImage()
     {
         $value = session('jwt');
+
         // Utilisateur connecté ?
         if (is_null($value)) {
             return redirect('/connexion');
