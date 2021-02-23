@@ -1,10 +1,23 @@
-.centrerVertical{
-    margin-top: 40vh;
-    transform: translateY(-50%);
+html, body{
+    height: 100%;
 }
 
 .centrerHoriz{
     transform: translateX(-50%);
     margin-left: 50%;
 }
+
+.loginIMG{
+    height:100%;
+    background-image: url(/images/loginBG.jpg?276f388027a7817049f4b03e7bd5a0ef);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.blurredBG{
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
+
 

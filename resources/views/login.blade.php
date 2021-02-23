@@ -1,11 +1,12 @@
 @extends('layout')
 
 @section('content')
+<div class="blurredBG loginIMG"></div>
 <div>
   <div class="row justify-content-center align-items-center">
     <div class="col-md-6">
-      <div class="col-md-12">
-        <form class="form centrerVertical" method="post" action="/login-to-strapi">
+      <div class="col-md-12 loginText">
+        <form class="form" method="post" action="/login-to-strapi">
           {{ csrf_field() }}
           <h1 class="text-center text-primary">Connexion</h1><br>
           @if($errors->any())
