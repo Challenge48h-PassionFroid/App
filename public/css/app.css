@@ -2,6 +2,11 @@ html, body{
     height: 100%;
 }
 
+.centrerVertical{
+    margin-top: 40vh;
+    transform: translateY(-50%);
+}
+
 .centrerHoriz{
     transform: translateX(-50%);
     margin-left: 50%;
@@ -19,15 +24,11 @@ html, body{
     -webkit-filter: blur(8px);
 }
 
-
-
-.crossRotate {
-  transform: rotate(-180deg);
-  -webkit-transform: rotate(-180deg);
-  -ms-transform: rotate(-180deg);
+.loginText{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
 }
 
-.card-img-top {
-  max-height: 200px;
-  width: auto!important;
-}
