@@ -32,8 +32,9 @@ class AuthController extends Controller
         ]);
 
         if ($response->status() == 200) {
-            // Stock Token JWT dans la session
+            // Stock Token & Role dans la session
             session(['jwt' => $response->throw()->json()['jwt']]);
+            session(['role' => $response->throw()->json()['user']['role']['type']]);
             return redirect('/');
         }
 
@@ -43,6 +44,7 @@ class AuthController extends Controller
     public function logout()
     {
         session(['jwt' => null]);
+        session(['role' => null]);
         return redirect('/connexion');
     }
 }

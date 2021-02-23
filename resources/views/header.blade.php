@@ -10,9 +10,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Rechercher une image</a>
                 </li>
+                @if(Session::get('role') == 'national')
                 <li class="nav-item">
                     <a class="nav-link" href="/ajout">Ajouter une image</a>
                 </li>
+                @endif
             </ul>
             <a href="/logout" class="text-danger">Déconnexion</a>
         </div>

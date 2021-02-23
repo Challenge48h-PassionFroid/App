@@ -15,13 +15,11 @@ class ImageController extends Controller
 
     public function displayAddImage()
     {
-        $token = session('jwt');
-
-        // Utilisateur connecté ?
-        if (is_null($token)) {
+        // Utilisateur connecté & avec le bon rôle ?
+        if (is_null(session('jwt')) || session('role') != 'national') {
             return redirect('/connexion');
         }
-        
+
         return view('addImage');
     }
 
@@ -35,7 +33,7 @@ class ImageController extends Controller
         }
 
         // On récupère les paramètres de la recherche pour construire notre requête
-        // A FACTORISER (manque de temps)
+        // A FACTORISER
         $request = 'https://chall48h-passionfroid.herokuapp.com/images?';
 
         if (isset($_GET['name'])) {
@@ -66,7 +64,7 @@ class ImageController extends Controller
             $request = $request . "isInstitutional=true&";
         }
 
-        if (isset($_GET['tags'])) {
+        if (isset($_GET['tags']) && $_GET['tags'] != '') {
             $tags = explode(',', $_GET['tags']);
             $request = $request . "_where";
 
@@ -81,5 +79,26 @@ class ImageController extends Controller
         return view('searchImage', [
             'images' => $images
         ]);
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $token = session('jwt');
+
+        // Utilisateur connecté & avec le bon rôle ?
+        if (is_null($token) || session('role') != 'national') {
+            return redirect('/connexion');
+        }
+
+        $request->validate([
+            'image' => 'mimes:jpg,jpeg,png',
+            //valider les autres données du formulaire
+        ]);
+
+        $response = Http::withToken($token)
+            ->attach('attachment', file_get_contents($request->file('image')), 'test.jpg')
+            ->post('https://chall48h-passionfroid.herokuapp.com/upload', [
+                'ref' => 'images'  
+            ]);
     }
 }
