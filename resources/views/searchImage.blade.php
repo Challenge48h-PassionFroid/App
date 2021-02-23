@@ -4,17 +4,17 @@
 
 <h1 class="my-4">Recherche d'image</h1>
 
-<form>
+<form method="get">
     <div class="input-group mt-2">
         <input type="text" placeholder="Nom de l'image" name="name" class="form-control border-secondary">
         <div class="input-group-append">
-            <select name="Type" class="form-select px-2">
+            <select name="type" class="form-select px-2">
                 <option value="none" selected>-- Type d'image --</option>
                 <option value="passionfroid">Photo PassionFroid</option>
                 <option value="fournisseur">Photo Fournisseur</option>
                 <option value="logo">Logo</option>
             </select>
-            <button class="btn btn-outline-secondary border-left-0" type="button">
+            <button class="btn btn-outline-secondary border-left-0" type="submit">
                 <i class="fas fa-search"></i>
             </button>
         </div>
@@ -73,13 +73,6 @@
                 </p>
             </div>
         </div>
-
-
-        <!-- <div class="col-sm-6 col-md-4 col-lg-3 item">
-            <div data-lightbox="photos">
-                <img class="img-fluid" src="https://chall48h-passionfroid.herokuapp.com{{ $image['url']['formats']['thumbnail']['url'] }}">
-            </div>
-        </div> -->
         @endforeach
     </div>
     <!-- Pagination -->
