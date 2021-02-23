@@ -59,7 +59,48 @@
 
 <hr />
 
+<!-- Gallery -->
+<div>
+    <div class="row photos d-flex justify-content-around">
+        @foreach ($images as $image)
+        <div class="card mb-3" style="width: 18rem;">
+            <div class="d-flex justify-content-center overflow-hidden">
+                <img class="card-img-top" src="https://chall48h-passionfroid.herokuapp.com{{ $image['url']['formats']['small']['url'] }}">
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    {{ $image['name'] }}
+                </p>
+            </div>
+        </div>
 
+
+        <!-- <div class="col-sm-6 col-md-4 col-lg-3 item">
+            <div data-lightbox="photos">
+                <img class="img-fluid" src="https://chall48h-passionfroid.herokuapp.com{{ $image['url']['formats']['thumbnail']['url'] }}">
+            </div>
+        </div> -->
+        @endforeach
+    </div>
+    <!-- Pagination -->
+    <!-- <nav class="d-flex justify-content-center">
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <span class="page-link">Previous</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active">
+                <span class="page-link">
+                    2
+                </span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link">Next</a>
+            </li>
+        </ul>
+    </nav> -->
+</div>
 
 <script>
     function toggler() {
