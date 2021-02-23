@@ -59,6 +59,8 @@
 
 <hr />
 
+
+
 <script>
     function toggler() {
         $('#advancedFilters').toggle()

@@ -6,12 +6,25 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-    public function displayAjout()
+    public function displayAddImage()
     {
-        return view('ajoutImage');
+        $value = session('jwt');
+        // Utilisateur connecté ?
+        if (is_null($value)) {
+            return redirect('/connexion');
+        }
+        
+        return view('addImage');
     }
-    public function displayRecherche()
+
+    public function displaySearchImage()
     {
-        return view('recherche');
+        $value = session('jwt');
+        // Utilisateur connecté ?
+        if (is_null($value)) {
+            return redirect('/connexion');
+        }
+
+        return view('searchImage');
     }
 }

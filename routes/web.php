@@ -13,5 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\ImageController@displayRecherche');
-Route::get('/ajout', 'App\Http\Controllers\ImageController@displayAjout');
+Route::get('/', 'App\Http\Controllers\ImageController@displaySearchImage');
+Route::get('/ajout', 'App\Http\Controllers\ImageController@displayAddImage');
+Route::get('/connexion', 'App\Http\Controllers\AuthController@displayLogin');
+Route::post('/login-to-strapi', 'App\Http\Controllers\AuthController@loginToStrapi');
