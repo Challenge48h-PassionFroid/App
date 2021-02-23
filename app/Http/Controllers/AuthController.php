@@ -15,9 +15,9 @@ class AuthController extends Controller
 
     public function displayLogin()
     {
-        $value = session('jwt');
+        $token = session('jwt');
         // Utilisateur connecté ?
-        if (is_null($value)) {
+        if (is_null($token)) {
             return view('login');
         }
 
