@@ -23,5 +23,10 @@ html, body{
 .card-img-top {
     max-height: 200px;
     width: auto;
-  }
+}
 
+.crossRotate {
+    transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+}
