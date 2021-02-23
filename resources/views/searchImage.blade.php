@@ -1,82 +1,82 @@
 @extends('layout')
 
 @section('content')
+<div class="container">
+    <h1 class="my-4">Recherche d'image</h1>
 
-<h1 class="my-4">Recherche d'image</h1>
-
-<form method="get">
-    <div class="input-group mt-2">
-        <input type="text" placeholder="Nom de l'image" name="name" class="form-control border-secondary">
-        <div class="input-group-append">
-            <select name="type" class="form-select px-2">
-                <option value="none" selected>-- Type d'image --</option>
-                <option value="passionfroid">Photo PassionFroid</option>
-                <option value="fournisseur">Photo Fournisseur</option>
-                <option value="logo">Logo</option>
-            </select>
-            <button class="btn btn-outline-secondary border-left-0" type="submit">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </div>
-
-    <button type="button" class="btn text-secondary mb-2" onclick="toggler()">Filtres avancés <i id="chevron" class="fas fa-chevron-down" style="transition: transform 0.3s"></i></button>
-
-    <div id="advancedFilters" style="display: none" class="mb-2">
-        <div>
-            <div class="d-flex justify-content-between">
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" id="withProduct" name="withProduct" class="custom-control-input">
-                    <label class="custom-control-label" for="withProduct">Produit visible</label>
-                </div>
-
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" id="withHuman" name="withHuman" class="custom-control-input">
-                    <label class="custom-control-label" for="withHuman">Humain visible</label>
-                </div>
-
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" id="isInstitutional" name="isInstitutional" class="custom-control-input">
-                    <label class="custom-control-label" for="isInstitutional">Photo institutionnelle</label>
-                </div>
-
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" id="isVertical" name="isVertical" class="custom-control-input">
-                    <label class="custom-control-label" for="isVertical">Image verticale</label>
-                </div>
+    <form method="get">
+        <div class="input-group mt-2">
+            <input type="text" placeholder="Nom de l'image" name="name" class="form-control border-secondary">
+            <div class="input-group-append">
+                <select name="type" class="form-select px-2">
+                    <option value="none" selected>-- Type d'image --</option>
+                    <option value="passionfroid">Photo PassionFroid</option>
+                    <option value="fournisseur">Photo Fournisseur</option>
+                    <option value="logo">Logo</option>
+                </select>
+                <button class="btn btn-outline-secondary border-left-0" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
         </div>
 
-        <div class="my-3">
-            <input type="text" name="credits" placeholder="Crédits" class="form-control" />
-        </div>
+        <button type="button" class="btn text-secondary mb-2" onclick="toggler()">Filtres avancés <i id="chevron" class="fas fa-chevron-down" style="transition: transform 0.3s"></i></button>
 
-        <div class="my-3">
-            <input type="text" name="tags" placeholder="Tags (séparés par des virgules)" class="form-control" />
-        </div>
-    </div>
-</form>
+        <div id="advancedFilters" style="display: none" class="mb-2">
+            <div>
+                <div class="d-flex justify-content-between">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" id="withProduct" name="withProduct" class="custom-control-input">
+                        <label class="custom-control-label" for="withProduct">Produit visible</label>
+                    </div>
 
-<hr />
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" id="withHuman" name="withHuman" class="custom-control-input">
+                        <label class="custom-control-label" for="withHuman">Humain visible</label>
+                    </div>
 
-<!-- Gallery -->
-<div>
-    <div class="row photos d-flex justify-content-around">
-        @foreach ($images as $image)
-        <div class="card mb-3" style="width: 18rem;">
-            <div class="d-flex justify-content-center overflow-hidden">
-                <img class="card-img-top" src="https://chall48h-passionfroid.herokuapp.com{{ $image['url']['formats']['small']['url'] }}">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" id="isInstitutional" name="isInstitutional" class="custom-control-input">
+                        <label class="custom-control-label" for="isInstitutional">Photo institutionnelle</label>
+                    </div>
+
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" id="isVertical" name="isVertical" class="custom-control-input">
+                        <label class="custom-control-label" for="isVertical">Image verticale</label>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <p class="card-text">
-                    {{ $image['name'] }}
-                </p>
+
+            <div class="my-3">
+                <input type="text" name="credits" placeholder="Crédits" class="form-control" />
+            </div>
+
+            <div class="my-3">
+                <input type="text" name="tags" placeholder="Tags (séparés par des virgules)" class="form-control" />
             </div>
         </div>
-        @endforeach
-    </div>
-    <!-- Pagination -->
-    <!-- <nav class="d-flex justify-content-center">
+    </form>
+
+    <hr />
+
+    <!-- Gallery -->
+    <div>
+        <div class="row photos d-flex justify-content-around">
+            @foreach ($images as $image)
+            <div class="card mb-3" style="width: 18rem;">
+                <div class="d-flex justify-content-center overflow-hidden">
+                    <img class="card-img-top" src="https://chall48h-passionfroid.herokuapp.com{{ $image['url']['formats']['small']['url'] }}">
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        {{ $image['name'] }}
+                    </p>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <!-- Pagination -->
+        <!-- <nav class="d-flex justify-content-center">
         <ul class="pagination">
             <li class="page-item disabled">
                 <span class="page-link">Previous</span>
@@ -93,6 +93,7 @@
             </li>
         </ul>
     </nav> -->
+    </div>
 </div>
 
 <script>
