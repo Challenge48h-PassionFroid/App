@@ -1,10 +1,23 @@
-.crossRotate {
-  transform: rotate(-180deg);
-  -webkit-transform: rotate(-180deg);
-  -ms-transform: rotate(-180deg);
+html, body{
+    height: 100%;
 }
 
-.card-img-top {
-  max-height: 200px;
-  width: auto!important;
+.centrerVertical{
+    margin-top: 40vh;
+    transform: translateY(-50%);
 }
+
+.centrerHoriz{
+    transform: translateX(-50%);
+    margin-left: 50%;
+}
+
+.loginIMG{
+    height:100%;
+    background-image: url("../img/loginBG.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
