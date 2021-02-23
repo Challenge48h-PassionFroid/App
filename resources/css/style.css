@@ -1,0 +1,9 @@
+.centrerVertical{
+    margin-top: 40vh;
+    transform: translateY(-50%);
+}
+
+.centrerHoriz{
+    transform: translateX(-50%);
+    margin-left: 50%;
+}

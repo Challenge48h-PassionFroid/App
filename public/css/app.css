@@ -1,5 +1,10 @@
-.crossRotate {
-  transform: rotate(-180deg);
-  -webkit-transform: rotate(-180deg);
-  -ms-transform: rotate(-180deg);
+.centrerVertical{
+    margin-top: 40vh;
+    transform: translateY(-50%);
 }
+
+.centrerHoriz{
+    transform: translateX(-50%);
+    margin-left: 50%;
+}
+
